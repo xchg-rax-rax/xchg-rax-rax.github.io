@@ -1,4 +1,4 @@
-## Oh hi! 
+## Wellcome to Malware Hell
 
 I didn't see you there, wellcome to *malware hell*!
 Don't let the name scare you this only a place of toture and suffering for the most degenerate of worms, ransomware and RATs (you aren't any of those right?).
