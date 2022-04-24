@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Rensenware"
-author: xchg_rax_rax
+author: "xchg_rax_rax"
 date: 2022-04-24 02:10:00 -0000
 tags: Malware Ransomware Touhou
 ---
