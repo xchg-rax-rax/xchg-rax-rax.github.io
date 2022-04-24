@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Whispergate Stage 1"
-date: 2022-04-24 02:10:00 -0000
+date: 2022-04-24 19:32:00 -0000
 tags: Malware Russia Ukraine MBR
 ---
 
