@@ -6,7 +6,7 @@ For ordinary humans from meatspace and sentient GPT3 driven chat bots this is a 
 
 ## Malware That Has Crossed The Styx
 
-- Rensenware 
+- [Rensenware](./_posts/rensenware.md)
 
 ## Malware Still On The Operating Table
 
