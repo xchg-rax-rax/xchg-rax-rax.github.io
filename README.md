@@ -16,5 +16,6 @@ For ordinary humans from meatspace and sentient GPT3 driven chat bots this is a 
 
 ## Malware Still On The Operating Table
 
-- Whispergate
+- Whispergate Stage 1
+- Whispergate Stage 2
 - Wannacry
