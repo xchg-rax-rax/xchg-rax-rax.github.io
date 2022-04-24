@@ -1,8 +1,9 @@
+---
 layout: post
 title: "Rensenware"
 date: 2022-04-24 02:10:00 -0000
 categories: Malware Ransomware Touhou
-
+---
 # Rensenware
 
 What better way to warm up the fireplace of malware hell than with a visit to a hell of different kind, a bullet hell!
