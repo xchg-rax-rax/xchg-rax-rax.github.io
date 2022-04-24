@@ -16,16 +16,16 @@ Let's begin.
 
 ## Behavioural Analysis
 
-To get a understanding of the way in which Rensenware operates and the kinds of behaviour we should be expecting to see when we begin more detailed technical analysis we will start out by performing some basic Behavioural analysis of the malware in a virtual machine.
+To get a understanding of the way in which Rensenware operates and the kinds of behaviour we should expect to see when we begin more detailed technical analysis, we will start out by performing some basic behavioural analysis of the malware in a virtual machine.
 Our approach will be to set up a very basic Windows 10 test environment, run the malware and observe any changes that might occur.
-This isn't a sophisticated approach and we could go further, seeking to record all changes made to the files system, registry and so on.
+This isn't a sophisticated approach and we could go further, seeking to record all changes made to the files-system, registry and so on.
 We chose not to do this however as we have good reason to believe that static analysis will be most effective against this particular variety of malware.
 
 We start out with a clean install of Windows 10 and create a simple example file for Rensenware to encrypt; a text file containing the frog haiku by Matsuo Bashô.
 
 ![Example file on a fresh install of windows](/images/dynamic1.png)
 
-Windows defender is then disabled both from the system tray and my modifying the registry and the malicious binary is downloaded onto the system.
+Windows defender is then disabled both from the system tray and by modifying the registry and the malicious binary is downloaded onto the system.
 
 ![Malicious Binary Downloaded](/images/dynamic2.png)
 
