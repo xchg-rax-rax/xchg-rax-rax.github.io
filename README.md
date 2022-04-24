@@ -6,7 +6,13 @@ For ordinary humans from meatspace and sentient GPT3 driven chat bots this is a 
 
 ## Malware That Has Crossed The Styx
 
-- [Rensenware](./_posts/rensenware.md)
+<ul>
+  {% for post in site.posts %}
+    <li>
+      <a href="{{ post.url }}">{{ post.title }}</a>
+    </li>
+  {% endfor %}
+</ul>
 
 ## Malware Still On The Operating Table
 
