@@ -8,7 +8,7 @@ tags: Malware Ransomware Touhou
 What better way to warm up the fireplace of malware hell than with a visit to a hell of different kind, a bullet hell!
 The Rensenware malware is a piece of ransom ware with a twist.<sup>[1]</sup>
 Rather than the usual demands levelled against victims, i.e. for some amount of bitcoin or ethererum to be transferred into an anonymous wallet, Rensenware demands something different from its victims.
-In order to save their files, the user must install the bullet hell game Touhou Seirensen ~ Undefined Fantastic Object and score at least 20 million points on *LUNATIC* mode (the highest difficulty).
+In order to save their files, the user must install the bullet hell game Touhou Seirensen ~ Undefined Fantastic Object and score at least 200 million points on *LUNATIC* mode (the highest difficulty).
 For people not familiar with the bullet hell genre this may be far more challenging a prospect than coming up with a few meagre million in bitcoin! 
 So help those lost souls at the end of our analysis we will write a short program that can trick Rensenware into thinking that you are indeed a master of touhou games and decrypting your files for you.
 
@@ -48,7 +48,7 @@ Running the specified Touhou game we see that the malware detects the process bu
 
 ![Touhou Running](/images/dynamic6.png)
 
-Starting a new game in lunatic mode as the malware requests we see that message changes to "Process Working" and it starts to keep track of our score.
+Starting a new game in lunatic mode as the malware requests we see that message changes to "Process Working" and the malware starts to keep track of our score.
 If we can now just reach 200 million points we will be able to rescue our files!
 
 ![Playing Touhou](/images/dynamic7.png)
@@ -71,8 +71,9 @@ $ file ./rensenware.bin
 ./rensenware.bin: PE32 executable (GUI) Intel 80386 Mono/.Net assembly, for MS Windows
 ```
 File tells us some basic information about the format of a given file.
-In this case it tells us the that the Rensenware binary is, unsurprisingly, a Windows PE file, more interesting however it also tells us that it is in fact a .Net assembly.
-.Net assemblies that have not been obfuscated can be verify reliably converted back into C# source code and so that fact that this binary is a .Net assembly means that reversing this binary will likely be quite easy.
+In this case it tells us the that the Rensenware binary is, unsurprisingly, a Windows PE file. 
+More interesting however it also tells us that it is in fact a .Net assembly.
+.Net assemblies that have not been obfuscated can be quite reliably converted back into C# source code and so that fact that this binary is a .Net assembly means that reversing this binary will likely be quite easy.
 Before we move on to attempting decompilation and hopefully simple source code analysis we will explore the metadata contained in the headers of the binary to see if any useful information is contained within.
 
 To analyse the PE file header of the executable we will use PE-bear.
