@@ -24,39 +24,39 @@ We chose not to do this however as we have good reason to believe that static an
 
 We start out with a clean install of Windows 10 and create a simple example file for Rensenware to encrypt; a text file containing the frog haiku by Matsuo Bashô.
 
-![Example file on a fresh install of windows](./images/dynamic1.png)
+![Example file on a fresh install of windows](/images/dynamic1.png)
 
 Windows defender is then disabled both from the system tray and my modifying the registry and the malicious binary is downloaded onto the system.
 
-![Malicious Binary Downloaded](./images/dynamic2.png)
+![Malicious Binary Downloaded](/images/dynamic2.png)
 
 Even though defender is completely disabled Smart Screen still flags the file as Malicious.
 We of course ignore this warning and proceed naively towards the encryption of our files...
 
-![Malicious File Warning](./images/dynamic3.png)
+![Malicious File Warning](/images/dynamic3.png)
 
 A few seconds pass and suddenly the icon of our the text file containing precious haiku turns blank and it's name acquires the `.RENSENWARE` extension.
 A few seconds more and a red warning message containing a cute anime *waifu* appears on our informing us that all our files have been encrypted and that to get them back we must score 200 million in Touhou Seirensen: Undefined Fantastic Object on "Lunatic" difficulty!
 
-![Ransom Warning](./images/dynamic4.png)
+![Ransom Warning](/images/dynamic4.png)
 
 Opening our precious text file in notepad we see that its contents have indeed been completely encrypted.
 The cute anime girls words were not an empty threat it seems!
 
-![Encrypted File](./images/dynamic5.png)
+![Encrypted File](/images/dynamic5.png)
 
 Running the specified Touhou game we see that the malware detects the process but warns us that we are not in lunatic mode. 
 
-![Touhou Running](./images/dynamic6.png)
+![Touhou Running](/images/dynamic6.png)
 
 Starting a new game in lunatic mode as the malware requests we see that message changes to "Process Working" and it starts to keep track of our score.
 If we can now just reach 200 million points we will be able to rescue our files!
 
-![Playing Touhou](./images/dynamic7.png)
+![Playing Touhou](/images/dynamic7.png)
 
 Well as it turns out Touhou on lunatic mode is actually ridiculously difficult and we weren't even able score 1 million, never mind the 0.2 billion the malware demands. 
 
-![Touhou Playing](./images/dynamic8.png)
+![Touhou Playing](/images/dynamic8.png)
 
 Since we stand no chance of winning against the malware on its own terms we must understand how it operates by revere engineering its binary and then use this knowledge to find a way to save our precious files. 
 
@@ -82,24 +82,24 @@ By parsing the file header of a binary it can provide us with a wealth of intere
 
 The first thing to note is the SHA256 sum of the binary is `7bf5623f0a10dfa148a35bebd899b7758612f1693d2a9910f716cf15a921a76a` this is consistent with the sum reported in the bleeping computer article which first broke the news of the malware<sup>[2]</sup>
 
-![General Metadata](./images/pebear1.png)
+![General Metadata](/images/pebear1.png)
 
 Next by inspecting the COFF File header data we see that the TimeDateStamp, a hard codded value in the header that indicates when the file was created<sup>[3]</sup>, tells us that the binary as compiled at 1:32pm UTC on the 6th of April 2017.
 While this value is very easy to spoof, it is a reasonable date as the malware was first reported my bleeping computer on the same day (which is suspicious for other reasons but I shan't speciate about that...).
 
-![COFF File Header](./images/pebear2.png)
+![COFF File Header](/images/pebear2.png)
 
 The import table of the binary is very uninteresting due to it being a .Net assembly with the binary only importing mscoree.dll which loads the CLR used by .Net assemblies.
 Any API calls to Win32 are likely to be done dynamically.
 
-![Import Table](./images/pebear3.png)
+![Import Table](/images/pebear3.png)
 
 The final bit of information we can extract is taken from the RSDSI table which contains debugging information related to the binary.
 This is particularly damming evidence in fact as it gives us the full path of the directory in which the binary was compiled.
 We see that it was compiled with Visual Studio 2017 and that the username of the author is *mkang*.
 This is a potentially a very valuable piece of information with respect to attribution and if accurate significant oversight on the part of the Rensenware author.
 
-![RSDSI Table](./images/pebear4.png)
+![RSDSI Table](/images/pebear4.png)
 
 With this discovery our basic static analysis is done and we move on to the more advance stage where we seek to reserve engineer the binary by decompiling it to it's source code and by inspecting this source code infer it's functionality.
 
@@ -118,14 +118,14 @@ $ ilspycmd ./rensenware.bin > rensenware.cs
 
 Opening this file in a text editor we clearly see that it is indeed the C# source code of the assembly.
 
-![Source Code of Assembly](./images/ilspy.png)
+![Source Code of Assembly](/images/ilspy.png)
 
 ### Source code analysis 
 
 The Rensenware source code contains 3 main functional classes, `Program`, `frmManualDecrypter` and `frmWarning `.
 The first of these classes and the one that contains the entry point of the program is the `Program` class.
 
-![Program Member Variables](./images/source1.png)
+![Program Member Variables](/images/source1.png)
 
 This contains a number of interesting member variables which alone tell us some very important information,
 Firstly there is a `List<string>` named `encryptedFiles` which presumably is used by the program to keep track of the file it has already encrypted.
@@ -136,30 +136,30 @@ Next is an array of strings named `targetExtensions`, containing a number of fil
 We may presume that these extensions represent the file types that Rensenware will encrypt and that all other files will be left unharmed.
 Finally there are some byte arrays simply named randomKey and randomIV which will, we may presume, be populated with a randomly generated Key and IV respectively.
 
-![Main Method 1](./images/source2.png)
+![Main Method 1](/images/source2.png)
 
 Next we move on to our analysis of the Program class' `Main` method, which is the entry point of the program.
 The main method starts by checking if the Key and IV files specified by the `KeyFilePath` and `IVFilePath` variables exist, and if they do it instantiates and runs the `frmManualDecrypter` which presumably decrypts all of the files encrypted by Rensenware.
 
-![Main Method 2](./images/source3.png)
+![Main Method 2](/images/source3.png)
 
 Next it allocates so memory for the Key and IV on the heap and randomly generates values for them.
 Following this it obtains some details about the filesystem.
 Specifically it obtains a list of the logical drives on the system along with the path to the `System32` directory.
 
-![Main Method 3](./images/source4.png)
+![Main Method 3](/images/source4.png)
 
 The program then start iterating over the logical drives.
 First it checks if the current drive contains the System32 directory and if it does it obtains a list of all the subdirectories of the users home directory.
 For each of these directories it then obtains a list of all of the files contain in that directory and it's subdirectories.
 It then iterates over these files, checking if they end with one of the extensions specified in `targetExtensions`, and if so encrypting them and appending their name with the addition of `.RENSENWARE` to the `encryptedFiles` list.
 
-![Main Method 4](./images/source5.png)
+![Main Method 4](/images/source5.png)
 
 In the event that the drive does not contain System32 then the malware simply encrypts all files with any of the specified extensions, in much the same way as it did for the file contained in the users home directory.
 Following this the `frmWarning` class is ran, presumably to show the ransom warning to the user and to verify if they have successfully overcome the challenge.
 
-![Crypt Method](./images/source6.png)
+![Crypt Method](/images/source6.png)
 
 The only other method in the `Program` class is the `Cyrpt` method.
 This method is responsible for both encrypting and decrypting files with it behaviour being determined by the optional argument `IsDecrypt`.
@@ -172,7 +172,7 @@ Now that we've thoroughly analysed the `Program` class we can take a look at `fr
 The main purpose of `frmWarning` is to check if the victim has met the demands of the malware by reading the memory of any running copy of the game Touhou Seirensen ~ Undefined Fantastic Object.
 The program imports two key Win32 API functions from `kernel32.dll` in order to do this.
 
-![Win32 Imports](./images/source7.png)
+![Win32 Imports](/images/source7.png)
 
 The first API function that it imports is `OpenProcess`.
 `OpenProcess` opens a handle to the remote process running on the system with the PID specified by `dwProcessId` .<sup>[6]</sup>
@@ -181,7 +181,7 @@ These two functions will be used to read values from the running instance of Tou
 
 The majority of the logic of the `frmWarning` class is contain in it's constructor.
 
-![frmWarning Method 1](./images/source8.png)
+![frmWarning Method 1](/images/source8.png)
  
  The constructor starts out by calling the `InitializeComponent` method, which is responsible for creating the GUI ransomware warning.
  Following this it creates and starts a new long running thread.
@@ -190,19 +190,19 @@ The majority of the logic of the `frmWarning` class is contain in it's construct
 To get a handle to the process it first attempts to obtain the PID of any running instance of Touhou 12 using its friendly name, "th12", and the Process.GetProcessesByName method<sup>[8]</sup>.
 If it successfully obtained the PID of the running game then it calls `OpenProcess` using this PID to obtain a handle to the process and sets the flag to indicate that it has successfully done so.
 
-![frmWarning Method 2](./images/source9.png)
+![frmWarning Method 2](/images/source9.png)
 
 If a handle to the remote process has already been open then a second flag `_flag_billion`, which indicates, if the ransom condition has been met, is checked and if it's true we break out of the loop.
 Otherwise the program uses the `ReadProcessMemory` function to read a 16 bit int from the address 4910032 of the address space of the remote process.
 This value is then compared with 3  and if its not equal to it then a message is displayed on the GUI that indicates that the game difficulty is not set to Lunatic mode and after a sleep the loop continues.
 
-![frmWarning Method 3](./images/sourceA.png)
+![frmWarning Method 3](/images/sourceA.png)
 
 If the check that lunatic mode is enabled passes then a message displaying the text "Process Working" is show on the UI and a second check is then performed.
 This second check reads a 4 byte integer from address 4918340 in the games address space and compares it's value with 20 million and if it is greater it sets `_flag_billion` otherwise it just resets the buffer used to read in the integer.
 A sleep follows and then, if the both the flags were set, the loop will be broken out of on the next iteration, otherwise the checks will continue until they are.
 
-![frmWarning Method 3](./images/sourceB.png)
+![frmWarning Method 3](/images/sourceB.png)
 
 After the while loop has been broken out of, the Key and IV values are saved to disk so that they can be used to manually decrypt the ransomed files if the subsequent automated decryption fails.
 Next the list of encrypted files in the `Program` object is iterated over and the `Program.Crypt` is called on each with the `IsDecrypt` flag set; a progress bar is updated after each file is decrypted.
@@ -218,13 +218,13 @@ To create a decrypter  we will simply create a binary which is given the friendl
  We started a game in lunatic mode, scored a few points and then inspected the memory address (0x4B0C44) that the malware reads to get the score.
  Low and behold it is indeed the same value as our score in the game (well almost the game times this number by 10 when displaying it so that your score is a bigger number).
 
-![Finding Score in Debugger](./images/debugger1.png)
+![Finding Score in Debugger](/images/debugger1.png)
 
 If we just manually modify this 32bit value in the debugger so that it exceeds 20 million the malware is tricked into believing that we have passed its test and it decrypts all of the files it encrypted.
 Victory!
 Our precious haiku is safe at last.
 
-![Malware Defeated One Way](./images/debugger2.png)
+![Malware Defeated One Way](/images/debugger2.png)
 
 Now we know that our understanding of the malware is correct we can go even further and create a program that will force the malware to decrypt our files without the need for a copy of Touhou to ever even be run.
 Here is the code used to achieve our goals:
@@ -263,7 +263,7 @@ We deal with this by disabling ASLR in the Visual Studio options and forcing the
 
 Running the Rensenware executable to again encrypt our files and then running this program with it's executable renamed to `th12.exe` we see that indeed the malware is again tricked into decrypting our files.
 
-![Decrypter/Forcer](./images/decrypter.png)
+![Decrypter/Forcer](/images/decrypter.png)
 
 And with that Rensenware is thoroughly defeated!
 Beating Touhou Seirensen ~ Undefined Fantastic Object on Lunatic difficulty is still a challenge however may prove far more difficult
