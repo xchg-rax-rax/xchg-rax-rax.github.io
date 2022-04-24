@@ -1,10 +1,10 @@
 ---
 layout: post
 title: "Rensenware"
+author: xchg_rax_rax
 date: 2022-04-24 02:10:00 -0000
-categories: Malware Ransomware Touhou
+tags: Malware Ransomware Touhou
 ---
-# Rensenware
 
 What better way to warm up the fireplace of malware hell than with a visit to a hell of different kind, a bullet hell!
 The Rensenware malware is a piece of ransom ware with a twist.<sup>[1]</sup>
