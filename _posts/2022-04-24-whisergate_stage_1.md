@@ -64,7 +64,6 @@ HANDLE drive0 = CreateFileW( L"\\\\.\\PhysicalDrive0", GENERIC_ALL, FILE_SHARE_R
 CreateFileW creates or opens a file or in this case I/O device and returns a handle to the file or device.
 `PhysicalDrive0` is a I/O device which allows for the direct reading a writing of bytes to the primary physical hard drive.<sup>[4]</sup>
 If the malware is able to successfully open a handle to this device then it will be able to write bytes to arbitrary locations on disk, including to the MBR. 
-It should be noted however that since Windows Vista/Windows Server 2008, this method of directly accessing physical drives has been restricted, likely due malware exhibiting exactly this kind of behaviour.
 
 Having opened a handle to `PhysicalDrive0` the malware simply call the `WriteFile` API function writes the buffer containing the ransom message to the initial 512 bytes of the disk.
 
@@ -86,12 +85,12 @@ The Malware finishes up by considerately closing the handle to `PhysicalDrive0` 
 # Summary and Thoughts
 
 I must say I was somewhat disappointed by how dated and rudimentary this malware was.
-The technique of directly opening a handle to `PhysicalDrive0` and using that to overwrite the MBR is very old and is ineffective against modern systems.
+The technique of directly opening a handle to `PhysicalDrive0` and using that to overwrite the MBR is very old and is likely ineffective against modern systems.
 Indeed almost any modern system with UEFI the primary drive will be partitioned using GPT and as a result will not even have a MBR.
-That being said however I doubt that having half a kilobyte of random data scribbled at the start of your hard drive will do much for your systems stability. 
+That being said however I doubt that having half a kilobyte of random data scribbled at the start of your hard drive will do much for you in terms of your system's stability. 
 
 It's possible that the attacker who deployed this malware selectively deployed  it against systems they knew to be vulnerable to it.
-Indeed the prevalence of machines running out dated version of Windows is likely fairly high in Ukraine so that doesn't seem an unreasonable notion.
+Indeed the prevalence of machines running out dated version of Windows and/or using legacy BIOS is likely fairly high in Ukraine so that doesn't seem an unreasonable notion.
 
 In my next post I will analyse the second stage of this malware and see if is of greater sophistication.
 
