@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "5 Vulnerability in AvTech Dozens Models of Devices"
-date: 2025-10-13 13:30:00 -0000
+date: 2025-10-13 09:30:00 -0000
 tags: CVE AvTech IoT
 ---
 
