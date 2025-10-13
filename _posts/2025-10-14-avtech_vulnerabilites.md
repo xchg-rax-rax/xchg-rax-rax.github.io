@@ -311,7 +311,7 @@ If it fails to get a ping back from host it knows that there is some kind of net
 
 
 I won't give the full disassembly for this one as the logic isn't as clean as for the others. 
-Suffice it to say that the config value `Network.NetworkFailureDetection.Address` is read from the cameras flash memory into `local_4c8`, they then do filter `"` (0x22), and `\`` (0x60) characters to try and prevent command injection, but this does nothing to stop us from using `$()` based command injection.
+Suffice it to say that the config value `Network.NetworkFailureDetection.Address` is read from the cameras flash memory into `local_4c8`, they then do filter `"` (0x22), and `` ` `` (0x60) characters to try and prevent command injection, but this does nothing to stop us from using `$()` based command injection.
 The filtered string is then integrated into a ping command used to check if the host at the address specificed by `Network.NetworkFailureDetection.Address` is up, and then passed to popen.
 ```c
 cgi_remove_char(local_4c8,0x22);
