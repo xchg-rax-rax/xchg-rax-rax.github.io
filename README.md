@@ -1,10 +1,11 @@
-## Welcome to Malware Hell
+## yhe `%rax` exchange
 
-Oh hi! I didn't see you there, wellcome to *malware hell*!
-Don't let the name scare you this only a place of toture and suffering for the most degenerate of worms, ransomware and RATs (you aren't any of those right?).
-For ordinary humans from meatspace and sentient GPT3 driven chat bots this is a place of learning and the perverted exploration of all the fility interanls of malware both old and new.
+i'm lewis patten, i'm a security engineer, and software developer.
+aside from that i'm also into doing vulnerability researcher and malware reverse engineer in my free time.
+this blog is a place for that work.
+please enjoy!
 
-## Malware That Has Crossed The Styx
+## Posts
 
 <ul>
   {% for post in site.posts %}
@@ -13,8 +14,3 @@ For ordinary humans from meatspace and sentient GPT3 driven chat bots this is a 
     </li>
   {% endfor %}
 </ul>
-
-## Malware Still On The Operating Table
-
-- Whispergate Stage 2
-- Wannacry
