@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "5 Vulnerability in AvTech Dozens Models of Devices"
+title: "5 Vulnerability in Dozens of Models of AvTech Devices"
 date: 2025-10-13 09:30:00 -0000
 tags: CVE AvTech IoT
 ---
@@ -15,6 +15,7 @@ Sadly it transpired that the vulnerability had been patched for my device but in
 
 # Protecting Yourself
 
+These vulnerabilities effect a lot of different AvTech devices particularly EOL ones.
 Along with this blog post I am releasing PoCs for all of these vulnerabilities so that, should you own any AvTech devices, you can check if you are vulnerable.
 I have strong reason to believe that some or all of these vulnerability have been exploited as 0 days for sometime.
 Most of these devices are EOL and as a result are unlikely to be patched and should be decommissioned as a result.
