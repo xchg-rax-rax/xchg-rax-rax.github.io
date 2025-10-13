@@ -1,4 +1,4 @@
-## yhe `%rax` exchange
+## the `%rax` exchange
 
 i'm lewis patten, i'm a security engineer, and software developer.
 aside from that i'm also into doing vulnerability researcher and malware reverse engineer in my free time.
