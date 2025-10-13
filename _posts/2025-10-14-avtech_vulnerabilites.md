@@ -34,7 +34,7 @@ With the firmware in hand I was able to begin reverse engineer and looking for b
 
 # The vulnerabilities
 
-# FTP Test (CVE-2025-57198)
+## FTP Test (CVE-2025-57198)
 
 In the `cgibox` binary there is a function for testing the FTP settings of the camera to make sure that the camera can reach the remote FTP server that it can send files to in the course of it's operation.
 This function reads previously saved FTP configuration settings from the camera's flash memory, and then without performing sanitization integrates them into a string which is then handed directly to `system()`.
@@ -93,7 +93,7 @@ undefined4 test_ftp(void)
 }
 ```
 
-# SMTP Test (CVE-2025-57200)
+## SMTP Test (CVE-2025-57200)
 
 In the `cgibox` binary there is a function for testing the SMTP settings of the camera to make sure that the camera is able to send an email to a system administrator in the event of any issues.
 This function reads previously saved SMTP configuration settings from the camera's flash memory, and then without performing sanitization integrates them into a string which is then handed directly to `system()`.
@@ -207,7 +207,7 @@ LAB_0003bd86:
 }
 ```
 
-# Mount SMB (CVE-2025-57201)
+## Mount SMB (CVE-2025-57201)
 
 In the `cgibox` binary there is a function for mounting SMB shares, which is run automatically to mount a share if such an SMB share is configured.
 This function reads previously saved SMB configuration settings from the camera's flash memory, and then without performing sanitization integrates them into a string which is then handed directly to `system()`.
@@ -304,7 +304,7 @@ void mount_smb_share(void)
 }
 ```
 
-# Network Failure Check (CVE-2025-57199)
+## Network Failure Check (CVE-2025-57199)
 
 The `NetFailDetectD` is a daemon that runs on the camera to detect if it has network access, the way that it does this is by regularly pining a specified host address and checking that a response is received.
 If it fails to get a ping back from host it knows that there is some kind of network issue at it then attempts to alter the administrator about this via SMTP.
@@ -324,13 +324,13 @@ While not a call to `system`, `popen` also results in a call to the system shell
 > The popen() function opens a process by creating a pipe, forking,
 > and invoking the shell.  
 
-# Username XSS (CVE-2025-57202)
+## Username XSS (CVE-2025-57202)
 
 When creating a new user for the admin console you can add arbitrary html character to the name of the new user. 
 This allows for XSS payloads to be injected which will be triggered whenever a user visits the user list page.
 
 
-# Core issue
+## Core issue
 
 All of these vulnerabilites rely on being able to write arbitrary data to the system config, which is possible via the `/cgi-bin/user/Config.cgi` endpoint.
 This endpoint however requires you to be authenticated to the device hence all of these vulnerabilities are post auth.
