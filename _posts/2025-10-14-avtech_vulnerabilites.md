@@ -333,7 +333,7 @@ This allows for XSS payloads to be injected which will be triggered whenever a u
 # Core issue
 
 All of these vulnerabilites rely on being able to write arbitrary data to the system config, which is possible via the `/cgi-bin/user/Config.cgi` endpoint.
-This endpoint however requires you to be authenticated to the device hence all of these devices are post auth.
+This endpoint however requires you to be authenticated to the device hence all of these vulnerabilities are post auth.
 
 
 # References
