@@ -1,8 +1,7 @@
 ---
-layout: article
-permalink: /about/
-title: "About"
-key: page-about
+title: About
+icon: fas fa-info-circle
+order: 4
 ---
 
 I'm **Lewis Patten** — a security engineer and software developer.

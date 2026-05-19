@@ -1,8 +1,7 @@
 ---
-layout: article
 title: "5 Vulnerabilities in Dozens of Models of AvTech Devices"
-date: 2025-10-13 09:30:00 -0000
-key: post-avtech-vulnerabilities
+date: 2025-10-13 09:30:00 +0000
+categories: [Vulnerability Research, IoT]
 tags: [cve, avtech, iot, command-injection, xss, rce]
 description: "Five novel vulnerabilities (4 post-auth RCE, 1 XSS) discovered across dozens of AvTech camera and DVR models — CVE-2025-57198 through CVE-2025-57202."
 ---

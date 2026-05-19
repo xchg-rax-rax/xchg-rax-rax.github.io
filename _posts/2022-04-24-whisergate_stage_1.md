@@ -1,8 +1,7 @@
 ---
-layout: article
 title: "Whispergate Stage 1"
-date: 2022-04-24 19:32:00 -0000
-key: post-whispergate-stage-1
+date: 2022-04-24 19:32:00 +0000
+categories: [Malware, Wipers]
 tags: [malware, russia, ukraine, mbr, wiper]
 description: "Technical analysis of the first stage of WhisperGate, the MBR-wiping pseudo-ransomware deployed against Ukrainian targets in January 2022."
 ---

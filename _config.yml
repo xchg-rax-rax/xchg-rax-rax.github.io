@@ -1,61 +1,88 @@
+theme: jekyll-theme-chirpy
+
+lang: en
+timezone: Etc/UTC
+
 title: "the %rax exchange"
+tagline: "Vulnerability research, malware reverse engineering, and low-level systems notes."
 description: >-
   Vulnerability research, malware reverse engineering, and low-level systems
   notes by Lewis Patten.
+
 url: "https://xchg-rax-rax.github.io"
-locale: "en-GB"
-lang: "en"
-timezone: "Etc/UTC"
 
-remote_theme: kitian616/jekyll-TeXt-theme
+github:
+  username: xchg-rax-rax
 
-text_skin: "dark"
-highlight_theme: "tomorrow-night-eighties"
+social:
+  name: Lewis Patten
+  links:
+    - https://github.com/xchg-rax-rax
 
-repository: xchg-rax-rax/xchg-rax-rax.github.io
+theme_mode: dark
 
-author:
-  name: "Lewis Patten"
-  url: "https://github.com/xchg-rax-rax"
+toc: true
 
-paginate: 8
-paginate_path: /page:num
-markdown: kramdown
+paginate: 10
+
 kramdown:
-  input: GFM
+  footnote_backlink: "&#8617;&#xfe0e;"
   syntax_highlighter: rouge
   syntax_highlighter_opts:
-    block:
+    css_class: highlight
+    span:
       line_numbers: false
+    block:
+      line_numbers: true
+      start_line: 1
 
-plugins:
-  - jekyll-feed
-  - jekyll-sitemap
-  - jekyll-seo-tag
-  - jekyll-paginate
-
-include:
-  - _pages
-
-permalink: /:year/:month/:day/:title/
+collections:
+  tabs:
+    output: true
+    sort_by: order
 
 defaults:
   - scope:
       path: ""
       type: posts
     values:
-      layout: article
-      sharing: true
-      aside:
-        toc: true
-      show_edit_on_github: false
-      show_subscribe: false
-      pageview: false
-      modify_date: ""
+      layout: post
+      comments: false
+      toc: true
+      permalink: /posts/:title/
   - scope:
-      path: "_pages"
-      type: pages
+      path: ""
+      type: tabs
     values:
-      layout: article
-      aside:
-        toc: true
+      layout: page
+      permalink: /:title/
+
+sass:
+  style: compressed
+
+compress_html:
+  clippings: all
+  comments: all
+  endings: all
+  profile: false
+  blanklines: false
+  ignore:
+    envs: [development]
+
+exclude:
+  - "*.gem"
+  - "*.gemspec"
+  - tools
+  - README.md
+  - LICENSE
+  - "*.config.js"
+  - package*.json
+
+jekyll-archives:
+  enabled: [categories, tags]
+  layouts:
+    category: category
+    tag: tag
+  permalinks:
+    tag: /tags/:name/
+    category: /categories/:name/
