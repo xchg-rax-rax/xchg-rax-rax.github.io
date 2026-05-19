@@ -7,36 +7,36 @@ tags: CVE AvTech IoT
 
 # Background 
 
-AvTech is a Taiwanese manufacture of security cameras and DVR devices.
-They have quite a poor history with the security of their devices with a plethora of vulnerabilities having been found over the years[1].
-In march of 2024 researchers at Akami discovered another vulnerability allowing for RCE on a number of AvTech devices[2].
+AvTech is a Taiwanese manufacturer of security cameras and DVR devices.
+They have quite a poor history with the security of their devices, with a plethora of vulnerabilities having been found over the years[1].
+In March of 2024 researchers at Akamai discovered another vulnerability allowing for RCE on a number of AvTech devices[2].
 This inspired me to obtain my own device to try and reproduce their vulnerability.
-Sadly it transpired that the vulnerability had been patched for my device but in the process of reverse engineering the firmware I discovered 5 novel vulnerability in a variety of AvTech devices including 4 post-auth RCE vulnerabilities and 1 XSS vulnerability.
+Sadly it transpired that the vulnerability had been patched for my device, but in the process of reverse engineering the firmware I discovered 5 novel vulnerabilities in a variety of AvTech devices, including 4 post-auth RCE vulnerabilities and 1 XSS vulnerability.
 
 # Protecting Yourself
 
-These vulnerabilities effect a lot of different AvTech devices particularly EOL ones.
+These vulnerabilities affect a lot of different AvTech devices, particularly EOL ones.
 Along with this blog post I am releasing PoCs for all of these vulnerabilities so that, should you own any AvTech devices, you can check if you are vulnerable.
-I have strong reason to believe that some or all of these vulnerability have been exploited as 0 days for sometime.
-Most of these devices are EOL and as a result are unlikely to be patched and should be decommissioned as a result.
-If you cannot decommission any of these devices, make sure that you set a long and complex password as these vulnerability are all post-auth.
+I have strong reason to believe that some or all of these vulnerabilities have been exploited as 0-days for some time.
+Most of these devices are EOL and as a result are unlikely to be patched and should be decommissioned.
+If you cannot decommission any of these devices, make sure that you set a long and complex password as these vulnerabilities are all post-auth.
 
 I reached out to AvTech to inform them of these vulnerabilities but they did not respond.
 
 # Obtaining the Firmware
 
-After obtaining an AvTech DGM1104 camera from ebay I began considering methods for obtaining a firmware image for it.
-My first thought was to open it up and try to dump the SPI flash as this is an approach that I had taken for previous cameras that I'd looked at.
-But it turns out that AvTech is very generous with their firmware images, particularly for their older devices, and almost of their out of support devices, as well as some of their in support devices, have firmware images available from their website.[3][4]
+After obtaining an AvTech DGM1104 camera from eBay I began considering methods for obtaining a firmware image for it.
+My first thought was to open it up and try to dump the SPI flash, as this is an approach that I had taken for previous cameras that I'd looked at.
+But it turns out that AvTech is very generous with their firmware images, particularly for their older devices, and almost all of their out-of-support devices, as well as some of their in-support devices, have firmware images available from their website.[3][4]
 
-With the firmware in hand I was able to begin reverse engineer and looking for bugs.
+With the firmware in hand I was able to begin reverse engineering and looking for bugs.
 
 
 # The vulnerabilities
 
 ## FTP Test (CVE-2025-57198)
 
-In the `cgibox` binary there is a function for testing the FTP settings of the camera to make sure that the camera can reach the remote FTP server that it can send files to in the course of it's operation.
+In the `cgibox` binary there is a function for testing the FTP settings of the camera to make sure that the camera can reach the remote FTP server that it can send files to in the course of its operation.
 This function reads previously saved FTP configuration settings from the camera's flash memory, and then without performing sanitization integrates them into a string which is then handed directly to `system()`.
 This can be trivially exploited to achieve command injection and remote code execution.
 
@@ -306,13 +306,13 @@ void mount_smb_share(void)
 
 ## Network Failure Check (CVE-2025-57199)
 
-The `NetFailDetectD` is a daemon that runs on the camera to detect if it has network access, the way that it does this is by regularly pining a specified host address and checking that a response is received.
-If it fails to get a ping back from host it knows that there is some kind of network issue at it then attempts to alter the administrator about this via SMTP.
+`NetFailDetectD` is a daemon that runs on the camera to detect whether it has network access; the way that it does this is by regularly pinging a specified host address and checking that a response is received.
+If it fails to get a ping back from the host it knows that there is some kind of network issue and it then attempts to alert the administrator about this via SMTP.
 
 
-I won't give the full disassembly for this one as the logic isn't as clean as for the others. 
-Suffice it to say that the config value `Network.NetworkFailureDetection.Address` is read from the cameras flash memory into `local_4c8`, they then do filter `"` (0x22), and `` ` `` (0x60) characters to try and prevent command injection, but this does nothing to stop us from using `$()` based command injection.
-The filtered string is then integrated into a ping command used to check if the host at the address specificed by `Network.NetworkFailureDetection.Address` is up, and then passed to popen.
+I won't give the full disassembly for this one as the logic isn't as clean as for the others.
+Suffice it to say that the config value `Network.NetworkFailureDetection.Address` is read from the camera's flash memory into `local_4c8`; they then filter `"` (0x22) and `` ` `` (0x60) characters to try and prevent command injection, but this does nothing to stop us from using `$()`-based command injection.
+The filtered string is then integrated into a ping command used to check if the host at the address specified by `Network.NetworkFailureDetection.Address` is up, and then passed to `popen`.
 ```c
 cgi_remove_char(local_4c8,0x22);
 cgi_remove_char(local_4c8,0x60);
@@ -320,20 +320,20 @@ sprintf(acStack_ac8,"ping -w 5 \"%s\"",local_4c8);
 pFVar2 = popen(acStack_ac8,"r");
 ```
 
-While not a call to `system`, `popen` also results in a call to the system shell and is consequentially vulnerable to command injection, see the linux man pages:
+While not a call to `system`, `popen` also results in a call to the system shell and is consequently vulnerable to command injection; see the Linux man pages:
 > The popen() function opens a process by creating a pipe, forking,
-> and invoking the shell.  
+> and invoking the shell.
 
 ## Username XSS (CVE-2025-57202)
 
-When creating a new user for the admin console you can add arbitrary html character to the name of the new user. 
+When creating a new user for the admin console you can add arbitrary HTML characters to the name of the new user.
 This allows for XSS payloads to be injected which will be triggered whenever a user visits the user list page.
 
 
 ## Core issue
 
-All of these vulnerabilites rely on being able to write arbitrary data to the system config, which is possible via the `/cgi-bin/user/Config.cgi` endpoint.
-This endpoint however requires you to be authenticated to the device hence all of these vulnerabilities are post auth.
+All of these vulnerabilities rely on being able to write arbitrary data to the system config, which is possible via the `/cgi-bin/user/Config.cgi` endpoint.
+This endpoint, however, requires you to be authenticated to the device, hence all of these vulnerabilities are post-auth.
 
 
 # References
