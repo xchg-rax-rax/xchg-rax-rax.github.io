@@ -1,8 +1,9 @@
 ---
-layout: post
 title: "Whispergate Stage 1"
 date: 2022-04-24 19:32:00 -0000
-tags: Malware Russia Ukraine MBR
+categories: [Malware]
+tags: [malware, russia, ukraine, mbr, wiper]
+description: "Technical analysis of the first stage of WhisperGate, the MBR-wiping pseudo-ransomware deployed against Ukrainian targets in January 2022."
 ---
 
 While the kinetic war between Russia and Ukraine began in earnest on the 24th of February of this year, the cyberwar between the two countries began long before that point.

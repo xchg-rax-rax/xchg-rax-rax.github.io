@@ -1,17 +1,7 @@
-i'm lewis patten, i'm a security engineer, and software developer.
+# the %rax exchange
 
-aside from that i'm also into doing vulnerability researcher and malware reverse engineer in my free time.
+I'm Lewis Patten — a security engineer and software developer.
 
-this blog is a place for that work.
+In my free time I do vulnerability research and malware reverse engineering. This blog is a place for that work.
 
-please enjoy!
-
-## Posts
-
-<ul>
-  {% for post in site.posts %}
-    <li>
-      <a href="{{ post.url }}">{{ post.title }}</a>
-    </li>
-  {% endfor %}
-</ul>
+Read the posts at **[xchg-rax-rax.github.io](https://xchg-rax-rax.github.io)**.

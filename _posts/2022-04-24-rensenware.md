@@ -1,8 +1,9 @@
 ---
-layout: post
 title: "Rensenware"
 date: 2022-04-24 02:10:00 -0000
-tags: Malware Ransomware Touhou
+categories: [Malware]
+tags: [malware, ransomware, touhou, reverse-engineering]
+description: "Reverse engineering Rensenware, a piece of ransomware that demands you score 200 million on Touhou Lunatic mode — and writing a small program to trick it into decrypting your files."
 ---
 
 What better way to warm up the fireplace of malware hell than with a visit to a hell of different kind, a bullet hell!

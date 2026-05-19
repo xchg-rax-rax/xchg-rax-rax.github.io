@@ -1,9 +1,61 @@
-title: the %rax exchange
-description: 𝕳𝖊𝖑𝖑𝖔 𝖒𝖆𝖑𝖜𝖆𝖗𝖊 𝖒𝖞 𝖔𝖑𝖉 𝖋𝖗𝖎𝖊𝖓𝖉...
-author: "xchg_rax_rax"
+title: "the %rax exchange"
+subtitle: "𝕳𝖊𝖑𝖑𝖔 𝖒𝖆𝖑𝖜𝖆𝖗𝖊 𝖒𝖞 𝖔𝖑𝖉 𝖋𝖗𝖎𝖊𝖓𝖉..."
+description: >-
+  Vulnerability research, malware reverse engineering, and low-level systems
+  notes by Lewis Patten.
 url: "https://xchg-rax-rax.github.io"
-theme: jekyll-theme-hacker
+locale: "en-GB"
+
+remote_theme: "mmistakes/minimal-mistakes@4.26.2"
+minimal_mistakes_skin: "dark"
+
+search: true
+
+author:
+  name: "Lewis Patten"
+  bio: "Security engineer & software developer. Vulnerability research and malware reverse engineering in my free time."
+  links:
+    - label: "GitHub"
+      icon: "fab fa-fw fa-github"
+      url: "https://github.com/xchg-rax-rax"
+
+footer:
+  links:
+    - label: "GitHub"
+      icon: "fab fa-fw fa-github"
+      url: "https://github.com/xchg-rax-rax"
+
+include:
+  - _pages
 
 plugins:
+  - jekyll-include-cache
+  - jekyll-remote-theme
   - jekyll-sitemap
   - jekyll-seo-tag
+  - jekyll-feed
+  - jekyll-paginate
+
+paginate: 5
+paginate_path: /page:num/
+
+defaults:
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: single
+      author_profile: true
+      read_time: true
+      share: true
+      related: true
+      show_date: true
+      toc: true
+      toc_sticky: true
+      classes: wide
+  - scope:
+      path: "_pages"
+      type: pages
+    values:
+      layout: single
+      author_profile: true
