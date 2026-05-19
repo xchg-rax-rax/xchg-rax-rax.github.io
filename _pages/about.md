@@ -1,7 +1,8 @@
 ---
-layout: page
+layout: article
 permalink: /about/
-title: "about"
+title: "About"
+key: page-about
 ---
 
 I'm **Lewis Patten** — a security engineer and software developer.

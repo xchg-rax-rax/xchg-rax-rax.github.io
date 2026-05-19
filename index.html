@@ -1,20 +1,13 @@
 ---
-layout: default
-title: "Home"
+layout: home
+title: "Posts"
+show_title: false
+articles:
+  data_source: site.posts
+  show_cover: false
+  show_excerpt: true
+  show_readmore: true
+  show_info: true
+  show_date: true
+  show_tags: true
 ---
-
-<h1>{{ site.title }}</h1>
-
-<p>{{ site.description }}</p>
-
-<h2>posts</h2>
-
-<ul>
-{% for post in site.posts %}
-  <li>
-    <code>{{ post.date | date: "%Y-%m-%d" }}</code>
-    &nbsp;
-    <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
-  </li>
-{% endfor %}
-</ul>

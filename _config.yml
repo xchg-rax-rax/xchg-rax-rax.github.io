@@ -5,29 +5,28 @@ description: >-
 url: "https://xchg-rax-rax.github.io"
 locale: "en-GB"
 lang: "en"
+timezone: "Etc/UTC"
 
-remote_theme: riggraz/no-style-please
+remote_theme: kitian616/jekyll-TeXt-theme
 
-appearance: "dark"
-appearance_toggle: true
+text_skin: "dark"
+highlight_theme: "tomorrow-night-eighties"
 
-back_to_top: true
-back_to_top_text: "↑ back to top"
-
-copyright: "© Lewis Patten"
-
-menu:
-  - title: "~"
-    url: "/"
-  - title: "about"
-    url: "/about/"
-  - title: "tags"
-    url: "/tags/"
-  - title: "rss"
-    url: "/feed.xml"
+repository: xchg-rax-rax/xchg-rax-rax.github.io
 
 author:
   name: "Lewis Patten"
+  url: "https://github.com/xchg-rax-rax"
+
+paginate: 8
+paginate_path: /page:num
+markdown: kramdown
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+  syntax_highlighter_opts:
+    block:
+      line_numbers: false
 
 plugins:
   - jekyll-feed
@@ -45,4 +44,18 @@ defaults:
       path: ""
       type: posts
     values:
-      layout: post
+      layout: article
+      sharing: true
+      aside:
+        toc: true
+      show_edit_on_github: false
+      show_subscribe: false
+      pageview: false
+      modify_date: ""
+  - scope:
+      path: "_pages"
+      type: pages
+    values:
+      layout: article
+      aside:
+        toc: true
