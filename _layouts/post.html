@@ -1,0 +1,30 @@
+---
+layout: default
+---
+<main class="page-main">
+  <header class="post-header">
+    <div class="section-label"><span class="tick"></span><span>Write-up</span></div>
+    <h1>{{ page.title }}</h1>
+    <div class="post-meta">
+      <span>{{ page.date | date: "%-d %B %Y" }}</span>
+    </div>
+    {% if page.description %}
+    <p class="post-desc">{{ page.description }}</p>
+    {% endif %}
+    <div class="post-tags">
+      {% include tag-pills.html tags=page.tags %}
+    </div>
+  </header>
+
+  {% if page.toc %}
+  <nav class="post-toc" id="toc">
+    <div class="post-toc-label">Contents</div>
+    <ul></ul>
+  </nav>
+  <script src="/assets/js/toc.js" defer></script>
+  {% endif %}
+
+  <div class="post-content">
+    {{ content }}
+  </div>
+</main>

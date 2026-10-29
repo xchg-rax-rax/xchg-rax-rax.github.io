@@ -1,0 +1,97 @@
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 20px $pad-x;
+  background: rgba($bg, 0.8);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba($red, 0.14);
+}
+
+.home .site-header {
+  position: fixed;
+  left: 0;
+  right: 0;
+  background: rgba($bg, 0.72);
+}
+
+.site-logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: $text;
+  font-family: $font-display;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  font-size: 14px;
+
+  &:hover {
+    color: $text;
+  }
+
+  .mark {
+    width: 10px;
+    height: 10px;
+    background: $red;
+    transform: rotate(45deg);
+    box-shadow: 0 0 12px $red;
+    display: inline-block;
+    flex: none;
+  }
+}
+
+.site-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: clamp(14px, 2.4vw, 32px);
+  font-family: $font-mono;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+
+  a {
+    color: $text-muted;
+
+    &:hover {
+      color: $red-bright;
+    }
+
+    &.active {
+      color: $red-bright;
+    }
+  }
+}
+
+.site-footer {
+  border-top: 1px solid rgba($red, 0.14);
+
+  .footer-inner {
+    max-width: $max-width;
+    margin: 0 auto;
+    padding: 28px $pad-x;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 16px;
+    font-family: $font-mono;
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    color: $text-faint;
+  }
+
+  a {
+    color: $text-faint;
+
+    &:hover {
+      color: $red-bright;
+    }
+  }
+}
+
+.cv .footer-inner {
+  max-width: $max-width-narrow;
+}

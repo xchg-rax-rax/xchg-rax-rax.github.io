@@ -1,0 +1,308 @@
+body.cv {
+  background-image: linear-gradient(rgba($red, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba($red, 0.035) 1px, transparent 1px),
+    radial-gradient(circle, rgba($red, 0.1) 1px, transparent 1.2px);
+  background-size: 64px 64px, 64px 64px, 16px 16px;
+  background-position: 0 0, 0 0, -8px -8px;
+}
+
+.cv-main {
+  max-width: $max-width-narrow;
+  margin: 0 auto;
+  padding: clamp(56px, 8vw, 104px) $pad-x 80px;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(64px, 8vw, 96px);
+}
+
+.cv-header {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 32px;
+
+  h1 {
+    margin: 0;
+    font-family: $font-display;
+    font-weight: 600;
+    font-size: clamp(40px, 6vw, 76px);
+    line-height: 1;
+    color: $text-bright;
+  }
+
+  .section-label {
+    margin-bottom: 20px;
+  }
+
+  .cv-contact {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 24px;
+    margin-top: 20px;
+    font-family: $font-mono;
+    font-size: 13px;
+    color: $text-muted;
+
+    a {
+      color: $text-muted;
+
+      &:hover {
+        color: $red-bright;
+      }
+    }
+  }
+}
+
+.cv-section {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  > .section-label {
+    border-bottom: 1px solid $border-grid;
+    padding-bottom: 14px;
+  }
+}
+
+.cv-job {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr));
+  gap: 12px 48px;
+  padding: 32px 0;
+  border-bottom: 1px solid $border-row;
+
+  &:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+}
+
+.cv-job-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+
+  .cv-job-date {
+    font-family: $font-mono;
+    font-size: 12px;
+    color: $red-bright;
+    letter-spacing: 0.06em;
+  }
+
+  .cv-job-company {
+    font-family: $font-display;
+    font-weight: 600;
+    font-size: 22px;
+    color: $text-bright;
+  }
+
+  .cv-job-location {
+    font-size: 14px;
+    color: $text-dimmer;
+  }
+}
+
+.cv-job-body {
+  grid-column: span 2;
+  min-width: 0;
+
+  .cv-job-role {
+    font-family: $font-display;
+    font-weight: 500;
+    font-size: 18px;
+    color: $text-bright;
+    margin-bottom: 14px;
+  }
+
+  ul {
+    margin: 0;
+    padding: 0 0 0 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    font-size: 15px;
+    line-height: 1.65;
+    color: $text-body;
+  }
+}
+
+.cv-research-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
+  gap: 1px;
+  background: $border-grid;
+  border: 1px solid $border-grid;
+}
+
+.cv-research-tile {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 24px;
+  background: $tile;
+
+  .cv-research-top {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    font-family: $font-mono;
+    font-size: 12px;
+
+    .cve-id {
+      color: $red-bright;
+    }
+
+    .cve-year {
+      color: $text-faint;
+    }
+  }
+
+  .cv-research-desc {
+    font-size: 15px;
+    line-height: 1.55;
+    color: $pill-text;
+  }
+}
+
+.cv-talk {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr));
+  gap: 12px 48px;
+}
+
+.cv-talk-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+
+  .cv-talk-date {
+    font-family: $font-mono;
+    font-size: 12px;
+    color: $red-bright;
+    letter-spacing: 0.06em;
+  }
+
+  .cv-talk-type {
+    font-size: 14px;
+    color: $text-dimmer;
+  }
+}
+
+.cv-talk-body {
+  grid-column: span 2;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+
+  .cv-talk-title {
+    font-family: $font-display;
+    font-weight: 600;
+    font-size: 22px;
+    color: $text-bright;
+  }
+
+  p {
+    margin: 0;
+    font-size: 15px;
+    line-height: 1.65;
+    color: $text-body;
+  }
+}
+
+.cv-cert-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+  gap: 0 48px;
+  font-size: 15px;
+}
+
+.cv-cert {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 14px 0;
+  border-bottom: 1px solid $border-row;
+
+  .cv-cert-name {
+    color: $text-bright;
+  }
+
+  .cv-cert-issuer {
+    color: $text-dimmer;
+  }
+
+  .cv-cert-date {
+    font-family: $font-mono;
+    font-size: 12px;
+    color: $text-dimmer;
+    white-space: nowrap;
+  }
+}
+
+.cv-skills {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.cv-skill-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr));
+  gap: 12px 48px;
+
+  .cv-skill-label {
+    font-family: $font-display;
+    font-weight: 600;
+    font-size: 17px;
+    color: $text-bright;
+  }
+
+  .cv-skill-value {
+    grid-column: span 2;
+    margin: 0;
+    font-family: $font-mono;
+    font-size: 13px;
+    line-height: 1.9;
+    color: $text-body;
+  }
+}
+
+.cv-two-col {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
+  gap: 48px;
+}
+
+.cv-entry {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+
+  .cv-entry-date {
+    font-family: $font-mono;
+    font-size: 12px;
+    color: $red-bright;
+  }
+
+  .cv-entry-title {
+    font-family: $font-display;
+    font-weight: 600;
+    font-size: 22px;
+    color: $text-bright;
+  }
+
+  .cv-entry-sub {
+    font-size: 15px;
+    color: $text-body;
+  }
+
+  .cv-entry-pub {
+    font-family: $font-display;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 1.3;
+    color: $text-bright;
+  }
+}

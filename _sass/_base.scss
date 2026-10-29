@@ -1,0 +1,117 @@
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background: $bg;
+  color: $text;
+}
+
+body {
+  font-family: $font-body;
+  line-height: 1.55;
+}
+
+a {
+  color: $red-bright;
+  text-decoration: none;
+}
+
+a:hover {
+  color: $red-soft;
+}
+
+::selection {
+  background: $red;
+  color: $bg;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+.clip-corner {
+  clip-path: polygon(
+    0 0,
+    calc(100% - 12px) 0,
+    100% 12px,
+    100% 100%,
+    12px 100%,
+    0 calc(100% - 12px)
+  );
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 22px;
+  font-family: $font-display;
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  border: 1px solid transparent;
+  transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+}
+
+.btn-solid {
+  @extend .clip-corner;
+  background: $red;
+  color: $bg;
+
+  &:hover {
+    background: $red-hover;
+    color: $bg;
+  }
+}
+
+.btn-outline {
+  border-color: rgba($red, 0.5);
+  color: $text-bright;
+  padding: 13px 22px;
+
+  &:hover {
+    border-color: $red;
+    color: $red-bright;
+  }
+}
+
+.section-label {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-family: $font-mono;
+  font-size: 12px;
+  letter-spacing: 0.16em;
+  color: $red-bright;
+  text-transform: uppercase;
+
+  .tick {
+    width: 28px;
+    height: 1px;
+    background: $red;
+    display: inline-block;
+  }
+}
+
+.pill {
+  padding: 7px 12px;
+  border: 1px solid $border;
+  color: $pill-text;
+  background: $surface;
+  font-family: $font-mono;
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  display: inline-block;
+}
+
+.pill-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}

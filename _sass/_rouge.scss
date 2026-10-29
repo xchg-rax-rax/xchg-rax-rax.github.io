@@ -1,0 +1,175 @@
+// Code highlighting theme — base16.dark (via `rougify style base16.dark`),
+// re-themed onto the site's red/black palette.
+$code-bg: $tile;
+$code-text: $pill-text;
+$code-comment: $text-faint;
+$code-keyword: $red-bright;
+$code-keyword-alt: #ff8f66;
+$code-string: #d9a853;
+$code-entity: #7fa8b3;
+
+.highlight {
+  background: $code-bg;
+  border: 1px solid $border-grid;
+  color: $code-text;
+  font-size: 0.85em;
+
+  table td {
+    padding: 5px;
+  }
+
+  table pre {
+    margin: 0;
+  }
+
+  pre {
+    padding: 16px;
+    overflow-x: auto;
+  }
+
+  .rouge-table {
+    width: 100%;
+    border-collapse: collapse;
+
+    td,
+    th {
+      border: none;
+      padding: 0;
+    }
+
+    .gutter {
+      padding-right: 16px;
+      padding-left: 16px;
+      text-align: right;
+      user-select: none;
+      color: $text-faint;
+      border-right: 1px solid $border-grid;
+    }
+
+    .code {
+      padding-left: 16px;
+      width: 100%;
+    }
+
+    pre {
+      padding: 16px 0;
+    }
+  }
+
+  .w {
+    color: $code-text;
+  }
+
+  .err {
+    color: $bg;
+    background-color: $red;
+  }
+
+  .c,
+  .ch,
+  .cd,
+  .cm,
+  .cpf,
+  .c1,
+  .cs {
+    color: $code-comment;
+    font-style: italic;
+  }
+
+  .cp,
+  .nt {
+    color: $code-keyword-alt;
+  }
+
+  .o,
+  .ow,
+  .p,
+  .pi {
+    color: $code-text;
+  }
+
+  .gi {
+    color: $code-string;
+  }
+
+  .gd {
+    color: $red;
+  }
+
+  .gh {
+    color: $red-bright;
+    background-color: $code-bg;
+    font-weight: bold;
+  }
+
+  .ge {
+    font-style: italic;
+  }
+
+  .ges {
+    font-weight: bold;
+    font-style: italic;
+  }
+
+  .gs {
+    font-weight: bold;
+  }
+
+  .k,
+  .kn,
+  .kp,
+  .kr,
+  .kv {
+    color: $code-keyword;
+  }
+
+  .kc,
+  .kt,
+  .kd {
+    color: $code-keyword-alt;
+  }
+
+  .s,
+  .sb,
+  .sc,
+  .dl,
+  .sd,
+  .s2,
+  .sh,
+  .sx,
+  .s1 {
+    color: $code-string;
+  }
+
+  .sa {
+    color: $code-keyword;
+  }
+
+  .sr {
+    color: $code-string;
+  }
+
+  .si,
+  .se {
+    color: $code-entity;
+  }
+
+  .nn,
+  .nc,
+  .no,
+  .na {
+    color: $code-entity;
+  }
+
+  .m,
+  .mb,
+  .mf,
+  .mh,
+  .mi,
+  .il,
+  .mo,
+  .mx,
+  .ss {
+    color: $code-string;
+  }
+}

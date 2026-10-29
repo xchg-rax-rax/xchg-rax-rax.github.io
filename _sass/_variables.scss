@@ -1,0 +1,33 @@
+// Colors
+$bg: #0a0a0c;
+$text: #e9e6e6;
+$text-bright: #f4f1f1;
+$text-body: #b9b3b4;
+$text-muted: #a9a3a4;
+$text-dim: #9a9394;
+$text-dimmer: #8a8384;
+$text-faint: #6f6869;
+$pill-text: #d8d2d3;
+
+$red: #ff2a3d;
+$red-bright: #ff3b4a;
+$red-hover: #ff5562;
+$red-soft: #ff7480;
+
+$border: #2a2527;
+$border-grid: #231f21;
+$border-row: #1c191b;
+
+$surface: #121114;
+$tile: #0e0d10;
+$tile-hover: #170c0f;
+
+// Fonts
+$font-display: 'Chakra Petch', sans-serif;
+$font-body: 'IBM Plex Sans', sans-serif;
+$font-mono: 'JetBrains Mono', monospace;
+
+// Layout
+$max-width: 1280px;
+$max-width-narrow: 1120px;
+$pad-x: clamp(20px, 4vw, 56px);

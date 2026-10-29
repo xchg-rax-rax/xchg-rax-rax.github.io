@@ -1,0 +1,186 @@
+---
+layout: page
+title: CV
+permalink: /cv/
+nav: cv
+---
+<main class="cv-main">
+
+  <section class="cv-header">
+    <div>
+      <div class="section-label"><span class="tick"></span><span>Curriculum Vitae</span></div>
+      <h1>Lewis Patten</h1>
+      <div class="cv-contact">
+        <a href="mailto:lpatten1729@gmail.com">lpatten1729@gmail.com</a>
+        <span>London, UK</span>
+      </div>
+    </div>
+    <a href="/assets/files/cv.pdf" download="Lewis-Patten-CV.pdf" class="btn btn-solid">Download PDF <span>&darr;</span></a>
+  </section>
+
+  <section class="cv-section">
+    <div class="section-label">01 &mdash; Experience</div>
+
+    <div class="cv-job">
+      <div class="cv-job-meta">
+        <span class="cv-job-date">OCT 2025 &mdash; PRESENT</span>
+        <span class="cv-job-company">Netcraft</span>
+        <span class="cv-job-location">London, UK</span>
+      </div>
+      <div class="cv-job-body">
+        <div class="cv-job-role">Cyber Security Engineer II</div>
+        <ul>
+          <li>Independently planned, scoped, and executed penetration tests across internal web applications, Windows Active Directory, Entra ID, and AWS cloud environments, identifying 25 significant vulnerabilities including multiple critical Active Directory privilege escalation chains leading to Domain Admin compromise</li>
+          <li>Reported findings including LAPS misconfigurations, overly privileged accounts, weak LDAP password policy, exposed credentials, and multiple XSS vulnerabilities directly to department heads, driving remediation initiatives across the AD environment and web application estate</li>
+          <li>Designed and deployed a purpose-built security alerting platform in Go on AWS EKS using Terraform, aggregating outputs from Nessus, Semgrep, Black Duck, and Vuls into actionable alerts for engineering teams, serving as the organisation's primary vulnerability detection layer</li>
+          <li>Led incident response for production security events including customer-reported XSS, service outages, a major third-party supply chain failure impacting CI/CD pipelines, and erroneous DNS records requiring external vendor coordination</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="cv-job">
+      <div class="cv-job-meta">
+        <span class="cv-job-date">AUG 2023 &mdash; JUN 2025</span>
+        <span class="cv-job-company">Garrison (now part of Everfox)</span>
+        <span class="cv-job-location">London, UK</span>
+      </div>
+      <div class="cv-job-body">
+        <div class="cv-job-role">Software Engineer</div>
+        <ul>
+          <li>Worked collaboratively to develop cutting-edge hardware security solutions for stakeholders in government, military, intelligence, and corporate sectors, enhancing protection of critical assets and sensitive information.</li>
+          <li>Contributed to a large, rapidly evolving codebase using C++20, C, Python, and TypeScript for a highly distributed system, maintaining sophisticated modern and legacy code components</li>
+          <li>Independently identified 6 critical vulnerabilities in the product offerings, implemented patches, and managed their testing and release to customers</li>
+          <li>Developed a comprehensive automated test suite for a critical, bug-prone component, uncovering 5 previously undetected bugs and automating 12 time-consuming manual tests, saving multiple days during QA, and accelerating release cycles</li>
+          <li>Made significant contributions to 6 major software releases, including as the primary developer on the first release of the software component of a next generation cross domain transfer solution</li>
+          <li>Independently completed the platform-level transition to FIPS 140-2 cryptography, enabling FedRAMP compliance and opening up sales of our cloud offering to US federal agencies</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="cv-job">
+      <div class="cv-job-meta">
+        <span class="cv-job-date">JUN 2022 &mdash; AUG 2023</span>
+        <span class="cv-job-company">Darktrace</span>
+        <span class="cv-job-location">Cambridge, UK</span>
+      </div>
+      <div class="cv-job-body">
+        <div class="cv-job-role">Software Engineer</div>
+        <ul>
+          <li>Applied knowledge of cybersecurity to aid in the development of a groundbreaking endpoint detection and response (EDR) and network intrusion detection solution.</li>
+          <li>Worked in a variety of languages including C++, Python and Swift to develop key new features in addition to maintaining and improving the existing codebase, with code being deployed to tens of thousands of endpoints.</li>
+          <li>Made significant contribution to a complex and rapidly evolving cross platform, multi-language codebase at one of the UK's top Cyber Security firms.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="cv-job">
+      <div class="cv-job-meta">
+        <span class="cv-job-date">JAN 2022 &mdash; JUN 2022</span>
+        <span class="cv-job-company">4sight Imaging</span>
+        <span class="cv-job-location">Manchester, UK</span>
+      </div>
+      <div class="cv-job-body">
+        <div class="cv-job-role">Junior Software Engineer</div>
+        <ul>
+          <li>Contributed to a modern C++ codebase working on sophisticated machine learning based image processing and analysis technologies for stakeholders in police and military.</li>
+          <li>Implemented and trained modern statistical machine learning models on high dimensional datasets using Python libraries such as Pandas and Scikit Learn, contributing significantly to the functionality of novel product offerings.</li>
+          <li>Worked in an agile environment following software engineering best principles to modernize and refactor a large, complex legacy codebase.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="cv-section">
+    <div class="section-label">02 &mdash; Security Research</div>
+    <div class="cv-research-grid">
+      <div class="cv-research-tile">
+        <div class="cv-research-top"><span class="cve-id">CVE-2026-30649</span><span class="cve-year">2026</span></div>
+        <div class="cv-research-desc">Unauthenticated remote buffer overflow in Vivotek FD8136 IP cameras, enabling RCE as root.</div>
+      </div>
+      <div class="cv-research-tile">
+        <div class="cv-research-top"><span class="cve-id">CVE-2026-30650, -30652, -35716, -35717</span><span class="cve-year">2026</span></div>
+        <div class="cv-research-desc">Four post-authentication buffer overflows across multiple endpoints in Vivotek FD8136 IP cameras.</div>
+      </div>
+      <div class="cv-research-tile">
+        <div class="cv-research-top"><span class="cve-id">CVE-2026-35718</span><span class="cve-year">2026</span></div>
+        <div class="cv-research-desc">Authenticated path traversal in Vivotek FD8136 IP cameras, enabling arbitrary file read.</div>
+      </div>
+      <div class="cv-research-tile">
+        <div class="cv-research-top"><span class="cve-id">CVE-2025-57198 &ndash; 57201</span><span class="cve-year">2025</span></div>
+        <div class="cv-research-desc">Four authenticated command injection vulnerabilities across multiple AVTECH IP camera web API endpoints.</div>
+      </div>
+      <div class="cv-research-tile">
+        <div class="cv-research-top"><span class="cve-id">CVE-2025-57202</span><span class="cve-year">2025</span></div>
+        <div class="cv-research-desc">Stored XSS vulnerability in user management endpoint of AVTECH IP cameras.</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cv-section">
+    <div class="section-label">03 &mdash; Conference Talks</div>
+    <div class="cv-talk">
+      <div class="cv-talk-meta">
+        <span class="cv-talk-date">JUL 2026</span>
+        <span class="cv-talk-type">Hands-on workshop</span>
+      </div>
+      <div class="cv-talk-body">
+        <div class="cv-talk-title">U-ART, U-Boot, U-Pwn: Dumping IoT Firmware the Hard Way</div>
+        <p>Delivered a hands-on workshop teaching attendees to identify and connect to UART debug ports on IoT PCBs, leverage U-Boot's built-in commands to dump firmware from flash memory, and reverse engineer the extracted binaries in Ghidra</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="cv-section">
+    <div class="section-label">04 &mdash; Certifications</div>
+    <div class="cv-cert-list">
+      <div class="cv-cert"><span><span class="cv-cert-name">CREST Registered Penetration Tester (CRT)</span> <span class="cv-cert-issuer">&ndash; CREST</span></span><span class="cv-cert-date">Dec 2026</span></div>
+      <div class="cv-cert"><span><span class="cv-cert-name">CREST Practitioner Security Analyst (CPSA)</span> <span class="cv-cert-issuer">&ndash; CREST</span></span><span class="cv-cert-date">Apr 2026</span></div>
+      <div class="cv-cert"><span><span class="cv-cert-name">Certified Red Team Professional for Azure (CARTP)</span> <span class="cv-cert-issuer">&ndash; Altered Security</span></span><span class="cv-cert-date">Dec 2025</span></div>
+      <div class="cv-cert"><span><span class="cv-cert-name">Certified Red Team Expert (CRTE)</span> <span class="cv-cert-issuer">&ndash; Altered Security</span></span><span class="cv-cert-date">Nov 2025</span></div>
+      <div class="cv-cert"><span><span class="cv-cert-name">Microsoft Certified: Azure Fundamentals (AZ-900)</span> <span class="cv-cert-issuer">&ndash; Microsoft</span></span><span class="cv-cert-date">Oct 2025</span></div>
+      <div class="cv-cert"><span><span class="cv-cert-name">AWS Certified Cloud Practitioner</span> <span class="cv-cert-issuer">&ndash; Amazon Web Services</span></span><span class="cv-cert-date">Oct 2025</span></div>
+      <div class="cv-cert"><span><span class="cv-cert-name">OffSec Certified Professional (OSCP)</span> <span class="cv-cert-issuer">&ndash; OffSec</span></span><span class="cv-cert-date">Jun 2025</span></div>
+      <div class="cv-cert"><span><span class="cv-cert-name">Practical Junior Penetration Tester (PJPT)</span> <span class="cv-cert-issuer">&ndash; TCM Security</span></span><span class="cv-cert-date">Feb 2025</span></div>
+      <div class="cv-cert"><span><span class="cv-cert-name">Certified Red Team Professional (CRTP)</span> <span class="cv-cert-issuer">&ndash; Altered Security</span></span><span class="cv-cert-date">Oct 2023</span></div>
+      <div class="cv-cert"><span><span class="cv-cert-name">Certified Red Team Operator (CRTO)</span> <span class="cv-cert-issuer">&ndash; Zero-Point Security</span></span><span class="cv-cert-date">Feb 2023</span></div>
+    </div>
+  </section>
+
+  <section class="cv-section">
+    <div class="section-label">05 &mdash; Technical Skills</div>
+    <div class="cv-skills">
+      <div class="cv-skill-row">
+        <span class="cv-skill-label">Security Tools</span>
+        <p class="cv-skill-value">Ghidra, IDA, radare2, GDB, WinDbg, binwalk, QEMU, AFL++, Wireshark, Nessus, Semgrep, Black Duck, Nmap, Metasploit, Burp Suite, BloodHound, Impacket, pwntools</p>
+      </div>
+      <div class="cv-skill-row">
+        <span class="cv-skill-label">Programming Languages</span>
+        <p class="cv-skill-value">C++, C, Python, Go, TypeScript, JavaScript, SQL, Swift, Objective-C, R, Bash, PowerShell, x86/x86-64 Assembly, ARM Assembly, MIPS Assembly</p>
+      </div>
+      <div class="cv-skill-row">
+        <span class="cv-skill-label">Development Tools</span>
+        <p class="cv-skill-value">Linux, Git, GitLab, Jira, CMake, Docker, Protobuf, JSON, OpenAPI, Visual Studio, Xcode</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="cv-two-col">
+    <div class="cv-section">
+      <div class="section-label">06 &mdash; Education</div>
+      <div class="cv-entry">
+        <span class="cv-entry-date">SEP 2017 &mdash; JUN 2021</span>
+        <span class="cv-entry-title">University of York</span>
+        <span class="cv-entry-sub">MMath (Hons) Mathematics - 1st</span>
+      </div>
+    </div>
+    <div class="cv-section">
+      <div class="section-label">07 &mdash; Publications</div>
+      <div class="cv-entry">
+        <span class="cv-entry-date">2022 &middot; BRITISH JOURNAL OF CANCER</span>
+        <span class="cv-entry-pub">Sodium accumulation in breast cancer predicts malignancy and treatment response</span>
+        <span class="cv-entry-sub">James, Andrew D, et al.</span>
+      </div>
+    </div>
+  </section>
+
+</main>

@@ -1,0 +1,206 @@
+.hero {
+  position: relative;
+  min-height: 100vh;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+}
+
+.hero-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.hero-fade {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    90deg,
+    rgba($bg, 0.92) 0%,
+    rgba($bg, 0.55) 42%,
+    rgba($bg, 0) 70%
+  );
+}
+
+.hero-grid {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: linear-gradient(rgba($red, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba($red, 0.04) 1px, transparent 1px);
+  background-size: 64px 64px;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: $max-width;
+  width: 100%;
+  margin: 0 auto;
+  padding: 140px $pad-x 100px;
+  pointer-events: none;
+}
+
+.hero-kicker {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-family: $font-mono;
+  font-size: 12px;
+  letter-spacing: 0.16em;
+  color: $red-bright;
+  text-transform: uppercase;
+  margin-bottom: 28px;
+
+  .tick {
+    width: 28px;
+    height: 1px;
+    background: $red;
+    display: inline-block;
+  }
+}
+
+.hero-title {
+  margin: 0;
+  font-family: $font-display;
+  font-weight: 600;
+  font-size: clamp(44px, 7.5vw, 104px);
+  line-height: 0.95;
+  letter-spacing: -0.01em;
+  max-width: 11ch;
+  color: $text-bright;
+}
+
+.hero-tagline {
+  margin: 28px 0 0;
+  max-width: 46ch;
+  font-size: clamp(17px, 1.5vw, 20px);
+  line-height: 1.55;
+  color: $text-body;
+}
+
+.hero-ctas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 40px;
+  pointer-events: auto;
+}
+
+.hero-bar {
+  position: absolute;
+  bottom: 28px;
+  left: $pad-x;
+  right: $pad-x;
+  z-index: 2;
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  font-family: $font-mono;
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  color: $text-faint;
+  text-transform: uppercase;
+  pointer-events: none;
+}
+
+section.about {
+  border-top: 1px solid rgba($red, 0.14);
+
+  .about-inner {
+    max-width: $max-width;
+    margin: 0 auto;
+    padding: clamp(72px, 10vw, 128px) $pad-x;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
+    gap: clamp(40px, 6vw, 96px);
+  }
+
+  h2 {
+    margin: 20px 0 0;
+    font-family: $font-display;
+    font-weight: 600;
+    font-size: clamp(30px, 3.6vw, 46px);
+    line-height: 1.1;
+    color: $text-bright;
+  }
+
+  .about-copy {
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+    font-size: 17px;
+    line-height: 1.7;
+    color: $text-body;
+
+    p {
+      margin: 0;
+    }
+  }
+
+  .pill-list {
+    margin-top: 10px;
+  }
+}
+
+section.explore {
+  border-top: 1px solid rgba($red, 0.14);
+
+  .explore-inner {
+    max-width: $max-width;
+    margin: 0 auto;
+    padding: clamp(72px, 10vw, 128px) $pad-x;
+  }
+
+  .section-label {
+    margin-bottom: 40px;
+  }
+
+  .explore-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
+    gap: 1px;
+    background: $border-grid;
+    border: 1px solid $border-grid;
+  }
+
+  .explore-tile {
+    display: flex;
+    flex-direction: column;
+    gap: 56px;
+    padding: 32px 28px;
+    background: $tile;
+    color: $text-bright;
+
+    &:hover {
+      background: $tile-hover;
+      color: $text-bright;
+    }
+  }
+
+  .explore-tile-top {
+    display: flex;
+    justify-content: space-between;
+    font-family: $font-mono;
+    font-size: 12px;
+    color: $red-bright;
+  }
+
+  .explore-tile-title {
+    font-family: $font-display;
+    font-weight: 600;
+    font-size: 28px;
+    display: block;
+  }
+
+  .explore-tile-desc {
+    font-size: 15px;
+    color: $text-dim;
+    display: block;
+    margin-top: 8px;
+  }
+}
