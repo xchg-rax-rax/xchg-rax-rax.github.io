@@ -13,46 +13,47 @@ $code-entity: #7fa8b3;
   border: 1px solid $border-grid;
   color: $code-text;
   font-size: 0.85em;
-
-  table td {
-    padding: 5px;
-  }
-
-  table pre {
-    margin: 0;
-  }
+  line-height: 1.65;
 
   pre {
-    padding: 16px;
+    margin: 0;
+    padding: 0;
     overflow-x: auto;
   }
 
   .rouge-table {
     width: 100%;
-    border-collapse: collapse;
+    border-collapse: separate;
+    border-spacing: 0;
 
     td,
     th {
       border: none;
       padding: 0;
+      vertical-align: top;
     }
 
-    .gutter {
-      padding-right: 16px;
-      padding-left: 16px;
+    // Higher specificity than .post-content pre (which sets margin on every
+    // <pre>, including these) so the gutter/code cells stay flush and only
+    // their own padding controls spacing.
+    pre {
+      margin: 0;
+      overflow-x: visible;
+    }
+
+    .rouge-gutter {
+      padding: 18px 20px;
       text-align: right;
       user-select: none;
       color: $text-faint;
+      background: rgba($bg, 0.25);
       border-right: 1px solid $border-grid;
+      white-space: nowrap;
     }
 
-    .code {
-      padding-left: 16px;
+    .rouge-code {
       width: 100%;
-    }
-
-    pre {
-      padding: 16px 0;
+      padding: 18px 24px;
     }
   }
 
